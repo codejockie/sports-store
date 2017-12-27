@@ -14,7 +14,7 @@ namespace SportsStore.Controllers
       repository = repo;
     }
 
-    public IActionResult List(int productPage = 1) =>
+    public ViewResult List(int productPage = 1) =>
       View(repository.Products
            .OrderBy(p => p.ProductID)
            .Skip((productPage - 1) * PageSize)
