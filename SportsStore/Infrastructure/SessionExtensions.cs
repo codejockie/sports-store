@@ -1,35 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace SportsStore.Infrastructure
 {
-  // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-  public class SessionExtensions
+  public static class SessionExtensions
   {
-    private readonly RequestDelegate _next;
-
-    public SessionExtensions(RequestDelegate next)
+    public static void SetJson(this ISession session, string key, object value)
     {
-      _next = next;
+      session.SetString(key, JsonConvert.SerializeObject(value));
     }
 
-    public Task Invoke(HttpContext httpContext)
+    public static T GetJson<T>(this ISession session, string key)
     {
-
-      return _next(httpContext);
-    }
-  }
-
-  // Extension method used to add the middleware to the HTTP request pipeline.
-  public static class SessionExtensionsExtensions
-  {
-    public static IApplicationBuilder UseMiddlewareClassTemplate(this IApplicationBuilder builder)
-    {
-      return builder.UseMiddleware<SessionExtensions>();
+      var sessionData = session.GetString(key);
+      return sessionData == null
+        ? default(T) : JsonConvert.DeserializeObject<T>(sessionData);
     }
   }
 }
