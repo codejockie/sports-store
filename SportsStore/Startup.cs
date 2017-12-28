@@ -39,18 +39,50 @@ namespace SportsStore
         app.UseDeveloperExceptionPage();
       }
 
-			app.UseStatusCodePages();
+      app.UseStatusCodePages();
       app.UseStaticFiles();
-      app.UseMvc(routes => {
+      app.UseMvc(routes =>
+      {
         routes.MapRoute(
-          name: "pagination",
-          template: "products/page{productPage}",
-          defaults: new { Controller = "Product", action = "List" });
-        
-        routes.MapRoute(
-          name: "default",
-          template: "{controller=Product}/{action=List}/{id?}"
+          name: null,
+          template: "{category}/page{productPage:int}",
+          defaults: new { controller = "Product", action = "List" }
         );
+
+        routes.MapRoute(
+          name: null,
+          template: "page{productPage:int}",
+          defaults: new
+          {
+            controller = "Product",
+            action = "List",
+            productPage = 1
+          }
+        );
+
+        routes.MapRoute(
+          name: null,
+          template: "{category}",
+          defaults: new
+          {
+            controller = "Product",
+            action = "List",
+            productPage = 1
+          }
+        );
+
+        routes.MapRoute(
+          name: null,
+          template: "",
+          defaults: new
+          {
+            controller = "Product",
+            action = "List",
+            productPage = 1
+          }
+        );
+
+        routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
       });
       SeedData.EnsurePopulated(app);
     }
