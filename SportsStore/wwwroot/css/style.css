@@ -1,2 +1,6 @@
-﻿body {
+﻿span.cart-badge {
+  background-color: transparent;
+  position: absolute !important;
+  right: 16px;
+  top: 33px !important;
 }
