@@ -17,6 +17,8 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Shared\Components\CartSummary\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <ItemGroup>
