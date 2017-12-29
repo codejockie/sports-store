@@ -39,5 +39,51 @@ namespace SportsStore.Tests
     {
       return (result as ViewResult)?.ViewData.Model as T;
     }
+
+    [Fact]
+    public void Can_Edit_Product()
+    {
+      // Arrange - create the mock repository
+      var mock = new Mock<IProductRepository>();
+      mock.Setup(m => m.Products).Returns(new Product[] {
+        new Product {ProductID = 1, Name = "P1"},
+        new Product {ProductID = 2, Name = "P2"},
+        new Product {ProductID = 3, Name = "P3"},
+      }.AsQueryable<Product>());
+
+      // Arrange - create the controller
+      var target = new AdminController(mock.Object);
+
+      // Act
+      var p1 = GetViewModel<Product>(target.Edit(1));
+      var p2 = GetViewModel<Product>(target.Edit(2));
+      var p3 = GetViewModel<Product>(target.Edit(3));
+
+      // Assert
+      Assert.Equal(1, p1.ProductID);
+      Assert.Equal(2, p2.ProductID);
+      Assert.Equal(3, p3.ProductID);
+    }
+
+    [Fact]
+    public void Cannot_Edit_Nonexistent_Product()
+    {
+      // Arrange - create the mock repository
+      var mock = new Mock<IProductRepository>();
+      mock.Setup(m => m.Products).Returns(new Product[] {
+        new Product {ProductID = 1, Name = "P1"},
+        new Product {ProductID = 2, Name = "P2"},
+        new Product {ProductID = 3, Name = "P3"},
+      }.AsQueryable<Product>());
+
+      // Arrange - create the controller
+      var target = new AdminController(mock.Object);
+
+      // Act
+      var result = GetViewModel<Product>(target.Edit(4));
+
+      // Assert
+      Assert.Null(result);
+    }
   }
 }
