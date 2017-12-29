@@ -20,6 +20,7 @@
     <Folder Include="Views\Shared\Components\CartSummary\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="Views\Order\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
 
   <ItemGroup>
