@@ -19,6 +19,7 @@
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Shared\Components\CartSummary\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
 
   <ItemGroup>
