@@ -13,7 +13,7 @@
     asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"
    >
     <i class="fa fa-shopping-cart fa-2x"></i>
-    <span class="badge badge-light cart-badge">
+    <span class="cart">
       @Model.Lines.Sum(x => x.Quantity)
     </span>
   </a>

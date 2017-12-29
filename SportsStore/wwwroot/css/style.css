@@ -1,6 +1,7 @@
-﻿span.cart-badge {
+﻿span.cart {
   background-color: transparent;
   position: absolute !important;
-  right: 16px;
-  top: 33px !important;
+  right: 17px;
+  top: 34px !important;
+  font-size: 11px;
 }
