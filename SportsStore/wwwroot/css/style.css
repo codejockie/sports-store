@@ -5,3 +5,7 @@
   top: 34px !important;
   font-size: 11px;
 }
+
+.btn {
+  cursor: pointer;
+}
