@@ -15,8 +15,10 @@ namespace SportsStore
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration) =>
+    public Startup(IConfiguration configuration)
+    {
       Configuration = configuration;
+    }
 
     public IConfiguration Configuration { get; }
 
@@ -39,7 +41,7 @@ namespace SportsStore
         .AddDefaultTokenProviders();
 
       services.AddTransient<IProductRepository, EFProductRepository>();
-      services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+      services.AddScoped<Cart>(SessionCart.GetCart);
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
       services.AddTransient<IOrderRepository, EFOrderRepository>();
       services.AddMvc();
@@ -103,6 +105,7 @@ namespace SportsStore
         routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
       });
       SeedData.EnsurePopulated(app);
+      IdentitySeedData.EnsurePopulated(app);
     }
   }
 }
