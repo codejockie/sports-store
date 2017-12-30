@@ -21,6 +21,7 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 
   <ItemGroup>
