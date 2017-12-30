@@ -30,7 +30,7 @@ test_script:
   - cmd: dotnet restore ./SportsStore.Tests/SportsStore.Tests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
   - cmd: cd SportsStore.Tests
-  - cmd: dotnet xunit
+  - cmd: dotnet test
 on_finish :
   # any cleanup in here
 deploy: off
