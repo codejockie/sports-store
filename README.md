@@ -16,6 +16,7 @@ Sports Store is a simple ecommerce app built with .NET Core 2.0
 + Install the app's dependencies
 + `$ dotnet restore`
 + Start the app
++ `$ cd SportsStore`
 + `$ dotnet run`
 
 # Tests
