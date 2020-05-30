@@ -1,6 +1,7 @@
+# Sports Store
+
 [![Build status](https://ci.appveyor.com/api/projects/status/hlh8jjkww7k7ep9w/branch/master?svg=true)](https://ci.appveyor.com/project/JohnKennedy/sports-store/branch/master)
 
-# Sports Store
 Sports Store is a simple ecommerce app built with .NET Core 2.0
 
 # Installation and Setup
